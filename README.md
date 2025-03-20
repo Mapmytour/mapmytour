@@ -1,4 +1,4 @@
-# React Project - MapMayTour
+# MapMayTour
 
 ## Overview
 
