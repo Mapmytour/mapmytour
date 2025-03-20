@@ -88,7 +88,7 @@ Before running the application, ensure you have the following installed:
 
 deployed on netlify
 
-## Contributer
+## Contributor
 @mukeshbuwade1
 
 ## License
