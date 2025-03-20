@@ -1,69 +1,100 @@
-# Welcome to your Lovable project
+# React Project - MapMayTour
 
-## Project info
+## Overview
 
-**URL**: https://lovable.dev/projects/b59a1378-ee6c-4a87-9a3d-4468a1b36875
+MapMayTour is a providing traveling-related solutions. It's built using React.js.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+*  User authentication
+* Tour Booking
+* Responsive design
+* Integration with supabase
+    ...
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b59a1378-ee6c-4a87-9a3d-4468a1b36875) and start prompting.
+* React.js
+* React Router, Tailwind CSS, Material UI, Axios
+* Supabase
+* Webpack, Vite
 
-Changes made via Lovable will be committed automatically to this repo.
+## Prerequisites
 
-**Use your preferred IDE**
+Before running the application, ensure you have the following installed:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* Node.js (>= 16)
+* npm or yarn 
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Installation
 
-Follow these steps:
+1.  Clone the repository:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+    ```bash
+    git clone [repository URL]
+    ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2.  Navigate to the project directory:
 
-# Step 3: Install the necessary dependencies.
-npm i
+    ```bash
+    cd mapmytour
+    ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+3.  Install dependencies:
 
-**Edit a file directly in GitHub**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+4.  Set up environment variables:
 
-**Use GitHub Codespaces**
+    * Create a `.env.local` file in the root directory.
+    * Add your environment variables (e.g., API keys, database credentials). Example:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+        ```
+        REACT_APP_API_KEY=your_api_key
+        REACT_APP_DATABASE_URL=your_database_url
+        ```
 
-## What technologies are used for this project?
+    * Replace the example keys and values with your actual credentials.
 
-This project is built with .
+## Running the Application
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1.  Start the development server:
 
-## How can I deploy this project?
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
 
-Simply open [Lovable](https://lovable.dev/projects/b59a1378-ee6c-4a87-9a3d-4468a1b36875) and click on Share -> Publish.
+2.  Open your browser and navigate to `http://localhost:3000`.
 
-## I want to use a custom domain - is that possible?
+## Build for Production
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+1.  Build the application for production:
+
+    ```bash
+    npm run build
+    # or
+    yarn build
+    ```
+
+2.  The production build will be generated in the `build` directory.
+
+## Deployment
+
+deployed on netlify
+
+## Contributer
+@mukeshbuwade1
+
+## License
+
+MIT
+
+## Contact
+
+mapMyTour
