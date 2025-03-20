@@ -44,12 +44,16 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
     [validation.validNumber]
   );
 
+const inValidNumMsg = "Invalid mobile number"
+
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validation.valid || !validateIndianMobileNumber(formData.mobile)) {
       toast({
         title: "Error",
-        description: !validation.valid ? validation.message : "Invalid mobile number",
+        description: !validation.valid
+          ? validation.message
+          : inValidNumMsg,
         variant: "destructive",
       });
       return;
@@ -77,6 +81,23 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
 
       if (data.user && onSuccess) {
         onSuccess();
+
+        const { error: profileError } = await supabase.from("user_profiles").insert([
+          {
+            id: data.user.id,
+            email: formData.email,
+            full_name: formData.name,
+            mobile_number: formData.mobile,
+          },
+        ]);
+
+        // Check for errors while inserting profile data
+
+        if (profileError) {
+          console.error("Error inserting profile data:", profileError.message);
+        } else {
+          console.log("Profile data saved successfully!");
+        }
       }
     } catch (error: unknown) {
       toast({
@@ -88,11 +109,11 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
       setLoading(false);
     }
   };
-  
-  const handleOnblur=()=>{
+
+  const handleOnblur = () => {
     const isValid = validateIndianMobileNumber(formData.mobile);
     setValidation((prev) => ({ ...prev, validNumber: isValid }));
-  }
+  };
 
   const handlePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -110,16 +131,30 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
         {/* Input fields */}
         {["name", "email", "mobile", "password"].map((id) => (
           <div key={id} className="space-y-2 relative">
-            <Label htmlFor={id}>{id=="mobile"?"Mobile Number":id.charAt(0).toUpperCase() + id.slice(1)}</Label>
+            <Label htmlFor={id}>
+              {id == "mobile"
+                ? "Mobile Number"
+                : id.charAt(0).toUpperCase() + id.slice(1)}
+            </Label>
             <Input
               id={id}
-              type={id === "password" ? (showPassword ? "text" : "password") : id === "email" ? "email" : id === "mobile" ? "tel" : "text"}
+              type={
+                id === "password"
+                  ? showPassword
+                    ? "text"
+                    : "password"
+                  : id === "email"
+                  ? "email"
+                  : id === "mobile"
+                  ? "tel"
+                  : "text"
+              }
               placeholder={id.charAt(0).toUpperCase() + id.slice(1)}
               value={formData[id]}
               onChange={handleInputChange}
               required
               className={id === "password" ? "pr-8" : ""}
-              onBlur={id === "mobile"?handleOnblur:undefined}
+              onBlur={id === "mobile" ? handleOnblur : undefined}
             />
             {id === "password" && formData.password && (
               <div
@@ -133,10 +168,14 @@ export const SignupForm = ({ onLoginClick, onSuccess }: SignupFormProps) => {
               </div>
             )}
             {id === "password" && formData.password && !validation.valid && (
-              <p className="text-red-800 text-xs absolute -bottom-6 left-0">{validation.message}</p>
+              <p className="text-red-800 text-xs absolute -bottom-6 left-0">
+                {validation.message}
+              </p>
             )}
             {id === "mobile" && formData.mobile && !validation.validNumber && (
-              <p className="text-red-800 text-xs absolute -bottom-5 left-0">Invalid mobile number</p>
+              <p className="text-red-800 text-xs absolute -bottom-5 left-0">
+                {inValidNumMsg}
+              </p>
             )}
           </div>
         ))}
