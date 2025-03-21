@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
   right: 10px;
   bottom: 80px;
-  z-index: 99;
+  z-index: 50;
 }
 
 /* Custom CSS for various components */
