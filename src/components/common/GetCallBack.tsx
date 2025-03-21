@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "../ui/use-toast";
+import { validateIndianMobileNumber } from "../auth/utils";
 export default function GetCallBack() {
 
        // Form states for Get A Call Back
@@ -33,8 +34,8 @@ export default function GetCallBack() {
     if (!callbackPhone.trim()) {
       errors.phone = "Phone number is required";
       isValid = false;
-    } else if (!/^\+?\d{10,15}$/.test(callbackPhone.trim())) {
-      errors.phone = "Please enter a valid phone number";
+    } else if (!validateIndianMobileNumber(callbackPhone)) {
+      errors.phone = "Please enter a valid phone number without +91";
       isValid = false;
     }
 
@@ -127,7 +128,7 @@ export default function GetCallBack() {
               }`}
               placeholder="Your Mobile Number"
               value={callbackPhone}
-              onChange={(e) => setCallbackPhone(e.target.value)}
+              onChange={(e) => {setCallbackPhone(e.target.value);setFormErrors((prev)=>({...prev,phone:""}))}}
               required
             />
             {formErrors.phone && (

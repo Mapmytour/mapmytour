@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDay, faMapMarkerAlt, faUser, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { validateIndianMobileNumber } from "./auth/utils";
 
 interface BookNowDialogProps {
   isOpen: boolean;
@@ -35,6 +36,14 @@ const BookNowDialog: React.FC<BookNowDialogProps> = ({ isOpen, onClose, isFromEn
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if(!validateIndianMobileNumber(phoneNumber)){
+      toast({
+        title: "Invalid mobile number",
+        description: "Enter valid mobile number without +91",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsSubmitting(true);
 
     try {
