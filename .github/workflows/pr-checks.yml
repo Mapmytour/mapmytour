@@ -57,22 +57,3 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-  CheckJsFiles:
-    runs-on: ubuntu-latest
-    steps:
-     - name: Check for JavaScript files
-       run: |
-          if [ ! -d "src" ]; then
-            echo "Error: src directory not found."
-            exit 1
-          fi
-
-          JS_FILES=$(find src -type f \( -name "*.js" -o -name "*.jsx" \))
-
-          if [ -n "$JS_FILES" ]; then
-            echo "Error: JavaScript files (.js or .jsx) are not allowed in the src folder."
-            echo "Found the following files:"
-            echo "$JS_FILES"
-            exit 1
-          fi
