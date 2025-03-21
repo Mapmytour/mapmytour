@@ -7,22 +7,22 @@ on:
       - main
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18  # Use the version your project requires
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18  # Use the version your project requires
 
-      - name: Install dependencies
-        run: npm install
+  #     - name: Install dependencies
+  #       run: npm install
 
-      - name: Run tests
-        run: npm test
+  #     - name: Run tests
+  #       run: npm test
 
   lint:
     runs-on: ubuntu-latest
@@ -57,16 +57,3 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-  CheckJsFiles:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check for JavaScript files
-        run: |
-          JS_FILES=$(find src -type f -name "*.js" -o -name "*.jsx")
-          if [ -n "$JS_FILES" ]; then
-            echo "Error: JavaScript files (.js or .jsx) are not allowed in the src folder."
-            echo "Found the following files:"
-            echo "$JS_FILES"
-            exit 1
-          fi

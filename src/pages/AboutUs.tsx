@@ -7,7 +7,6 @@ import { whatWeOffer, whyChooseUs } from "@/constant";
 const AboutUs = () => {
   return (
     <PageWrapper>
-      {/* Navbar & Hero */}
       <div className="relative">
         {/* Hero Header */}
         <div className="bg-primary py-20 about-container">

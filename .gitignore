@@ -26,3 +26,6 @@ dist-ssr
 # Ignore compiled JavaScript files
 src/**/*.js
 src/**/*.jsx
+
+# env file
+.env
