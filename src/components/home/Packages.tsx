@@ -54,7 +54,7 @@ export default function Packages({ handleBookNowClick }) {
               <img
                 className="w-full h-48 object-cover"
                 src={pkg.src}
-                alt={pkg.place}
+                alt={`${pkg.place}-travling agency, holliday planner`}
               />
               <div className="p-4">
                 <div className="flex justify-between mb-3">

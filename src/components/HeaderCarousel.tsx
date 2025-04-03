@@ -91,7 +91,7 @@ const HeaderCarousel: React.FC<HeaderCarouselProps> = ({
               <img
                 className="w-full h-full object-cover"
                 src={e.src}
-                alt="Image"
+                alt="travling agency, holliday planner"
               />
               <div className="absolute inset-0 bg-black bg-opacity-30"></div>
               <div className="carousel-caption absolute inset-0 flex flex-col items-center justify-center text-center">
