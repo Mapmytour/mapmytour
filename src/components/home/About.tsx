@@ -8,7 +8,7 @@ export default function About({handleBookNowClick}) {
         <img
           className="absolute w-full h-full object-cover"
           src="/img/about.jpg"
-          alt="About"
+          alt="About- travling agency, holliday planner"
         />
       </div>
       <div className="lg:-ml-10 z-10 flex items-center justify-center">
@@ -27,10 +27,10 @@ export default function About({handleBookNowClick}) {
           </p>
           <div className="grid grid-cols-2 gap-4 my-4">
             <div>
-              <img className="w-full" src="/img/about-1.jpg" alt="" />
+              <img className="w-full" src="/img/about-1.jpg" alt="travling agency, holliday planner" />
             </div>
             <div>
-              <img className="w-full" src="/img/about-2.jpg" alt="" />
+              <img className="w-full" src="/img/about-2.jpg" alt="travling agency, holliday planner" />
             </div>
           </div>
           <a

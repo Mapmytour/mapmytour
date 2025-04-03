@@ -14,6 +14,7 @@ export default function Footer() {
           <a href="/" className="navbar-brand" >
             <img src="https://gqluohyewtjcjbntjfym.supabase.co/storage/v1/object/sign/logos/logoWithPunchLine.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJsb2dvcy9sb2dvV2l0aFB1bmNoTGluZS5wbmciLCJpYXQiOjE3NDE1OTE3MjIsImV4cCI6MTg5OTI3MTcyMn0.2VDuzFc8T7wi6p-P6loRzozVYVZGPllBlVKUEj0jP1I"
             className="h-[50px] bg-gray-100"
+            alt='travling agency, holliday planner'
             />
           </a>
           <p className='mt-4'>

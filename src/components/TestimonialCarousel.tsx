@@ -27,7 +27,7 @@ const TestimonialCarousel: React.FC = () => {
         }}>
           <div className="text-center ">
             
-            <img className="mx-auto   z-10" src={`/img/testimonial-${testimonial}.jpg`} alt="Client" style={{
+            <img className="mx-auto   z-10" src={`/img/testimonial-${testimonial}.jpg`} alt="Client - travling agency, holliday planner" style={{
               height:"100px",
               width:"100px",
               position:"relative"

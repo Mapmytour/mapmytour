@@ -21,7 +21,7 @@ export default function TravelGuides() {
                 <img
                   className="w-full transition-transform duration-500 group-hover:scale-110"
                   src={`/img/team-${guide}.jpg`}
-                  alt="Guide"
+                  alt="Guide - travling agency, holliday planner"
                 />
                 <div className="team-social absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 hover:opacity-100 hover:bg-[rgba(0,0,0,0.5)] transition duration-500">
                   <a

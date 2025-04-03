@@ -19,7 +19,7 @@ export default function BlogSection() {
                 <img
                   className="w-full h-60 object-cover"
                   src={`/img/blog-${blog}.jpg`}
-                  alt="Blog"
+                  alt="Blog- travling agency, holliday planner"
                 />
                 <div className="blog-date absolute top-4 right-4 bg-primary text-white w-16 h-16 flex flex-col items-center justify-center">
                   <h6 className="font-bold mb-0">01</h6>

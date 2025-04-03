@@ -41,7 +41,7 @@ export default function PageWrapper({
 
       <div className="fixed bottom-4 left-2 lg:left-5 z-50">
         <a target="_black" href="https://wa.me/919260927665/?text=I%27m%20interested%20in%20[xyz]%20package">
-          <img src="/img/whatsapp.svg" className="w-[40px] h-[40px]" />
+          <img src="/img/whatsapp.svg" className="w-[40px] h-[40px]" alt="whatsapp icon - travling agency, holliday planner" />
         </a>
       </div>
       <div className="fixed bottom-4 right-2 lg:right-5 z-50 bg-black py-3 px-6 cursor-pointer"  onClick={handleBookNowClick}>

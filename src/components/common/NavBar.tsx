@@ -38,7 +38,7 @@ export default function NavBar({ isHome }: { isHome?: boolean }) {
               onClick={() => nav("/")}
               className="navbar-brand flex flex-col items-center"
             >
-              <img className="h-[25px]" src="/img/logo.png" />
+              <img className="h-[25px]" src="/img/logo.png" alt="The logo of a travel company featuring a stylized red arrow circling a map pin symbol, ideal for promoting tours and vacation experiences." />
               <p className="text-[8px] uppercase tracking-[0.4px]"><b>travel world with class</b></p>
             </a>
             <button
