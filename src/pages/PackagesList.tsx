@@ -70,7 +70,7 @@ export default function PackagesList() {
       <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
 
       <div className="container mx-auto py-12">
-        <div className="text-center mb-8">
+        <div className="text-center mb-10">
           <h6
             className="text-primary uppercase"
             style={{ letterSpacing: "5px" }}
