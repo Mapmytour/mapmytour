@@ -69,8 +69,8 @@ export default function PackagesList() {
     <PageWrapper>
       <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
 
-      <div className="container mx-auto py-12">
-        <div className="text-center mb-10">
+      <div className="container mx-auto pb-12 pt-[4rem]">
+        <div className="text-center mb-8">
           <h6
             className="text-primary uppercase"
             style={{ letterSpacing: "5px" }}
