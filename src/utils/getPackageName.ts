@@ -6,7 +6,7 @@ export const getPackageName = (name: string) => {
   } else if (name?.toLowerCase?.()?.includes?.("packages")) {
     name = name.toLowerCase().replace("packages", "");
   }
-  return name.toLowerCase().replace(/\b[a-z](?=[a-z]{2})/g, function (letter) {
+  return (name||"")?.toLowerCase().replace(/\b[a-z](?=[a-z]{2})/g, function (letter) {
     return letter.toUpperCase();
   });
 };
