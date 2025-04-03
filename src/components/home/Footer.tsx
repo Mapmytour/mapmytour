@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-5">
         <div className="mb-5">
           <a href="/" className="navbar-brand" >
-            <img src="https://zoknyeevtxvzwgdkubwq.supabase.co/storage/v1/object/public/logo//logo.png"
+            <img src="https://zoknyeevtxvzwgdkubwq.supabase.co/storage/v1/object/public/logo//logo1.png"
             className="h-[50px] bg-gray-100"
             alt='travling agency, holliday planner'
             />
