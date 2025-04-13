@@ -57,8 +57,8 @@ export default function PackagesList() {
   }, [destinationId, toast]);
 
   const handleBookNowClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    openDialog();
+    // e.preventDefault();
+    // openDialog();
   };
   const nav = useNavigate();
   const navigateToDetails = (packageId) => {
@@ -146,7 +146,7 @@ export default function PackagesList() {
                     className="bg-primary text-white w-full py-2 inline-block text-center"
                     onClick={handleBookNowClick}
                   >
-                    Book Now
+                    View Package
                   </a>
                 </div>
               </div>
