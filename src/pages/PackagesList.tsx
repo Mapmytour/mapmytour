@@ -25,10 +25,10 @@ export default function PackagesList() {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
-
+  
   // Get subDestinationName from location state
   const  subDestinationName = getPackageName(location.state?.subDestinationName )|| "Tour";
-
+  const  isInternationalPackage = location.state?.isInternationalPackage|| false
 
   useEffect(() => {
     const loadPackages = async () => {
@@ -36,7 +36,7 @@ export default function PackagesList() {
         setLoading(true);
         // destinationId here is actually the sub_destination_id from the route
         if (destinationId) {
-          const data = await fetchPackages(destinationId);
+          const data = await fetchPackages(destinationId,isInternationalPackage);
           setPackages(data);
         } else {
           setPackages([]);
@@ -62,7 +62,7 @@ export default function PackagesList() {
   };
   const nav = useNavigate();
   const navigateToDetails = (packageId) => {
-    // nav("/package-details/:1");
+    nav(`/package-details/:${packageId}`);
   };
 
   return (
@@ -90,7 +90,7 @@ export default function PackagesList() {
               <div
                 key={pkg.id}
                 className="package-item bg-white mb-4 shadow-sm"
-                onClick={navigateToDetails}
+                onClick={()=>navigateToDetails(pkg.id)}
               >
                 <img
                   className="w-full h-48 object-cover"
