@@ -1,10 +1,5 @@
-import BookNowDialog from "@/components/BookNowDialog";
-import FooterNote from "@/components/common/FooterNote";
-import NavBar from "@/components/common/NavBar";
-import PageHeader from "@/components/common/PageHeader";
 import Package from "@/components/emptyscreen/Package";
 import { fetchPackages } from "@/utils/supabaseQueries";
-import { useBookNowDialog } from "@/hooks/useBookNowDialog";
 import {
   faCalendarAlt,
   faMapMarkerAlt,
@@ -21,7 +16,6 @@ import { getPackageName } from "@/utils/getPackageName";
 export default function PackagesList() {
   const { destinationId } = useParams();
   const location = useLocation();
-  const { isOpen, openDialog, closeDialog } = useBookNowDialog();
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
@@ -54,7 +48,7 @@ export default function PackagesList() {
     };
 
     loadPackages();
-  }, [destinationId, toast]);
+  }, [destinationId, isInternationalPackage, toast]);
 
   const handleBookNowClick = (e: React.MouseEvent) => {
     // e.preventDefault();
@@ -67,8 +61,6 @@ export default function PackagesList() {
 
   return (
     <PageWrapper>
-      <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
-
       <div className="container mx-auto pb-12 pt-[4rem]">
         <div className="text-center mb-8">
           <h6
