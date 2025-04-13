@@ -1,34 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
-import {
-  MapPin,
-  Users,
-  Hotel,
-  Utensils,
-  Plane,
-  Car,
-  Activity,
-  Calendar,
-  PhoneCall,
-  Mail,
-  Clock,
-  MoveRight,
-} from "lucide-react";
+import { Plane, MoveRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
@@ -36,10 +8,24 @@ import { fetchItinerary } from "@/utils/supabaseQueries";
 import Package from "@/components/emptyscreen/Package";
 import BookNowDialog from "@/components/BookNowDialog";
 import { useBookNowDialog } from "@/hooks/useBookNowDialog";
+import DayWiseActivities from "@/components/packageDetails/DayWiseActivities";
+import ServiceInclude from "@/components/packageDetails/ServiceInclude";
+import ImageCarousel from "@/components/packageDetails/ImageCarousel";
+import StickyCard from "@/components/packageDetails/StickyCard";
+import TabBar from "@/components/packageDetails/TabBar";
+import Overview from "@/components/packageDetails/Overview";
+import CalculatePriceScreen from "@/components/packageDetails/CalculatePriceScreen";
+
+const tabs = [
+  { id: "activities", label: "Activities" },
+  { id: "overview", label: "Overview" },
+  { id: "calculate", label: "Calculate Price" },
+];
 
 const PackageDetails = () => {
   const [itinerary, setItinerary] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
   const { toast } = useToast();
   const { isOpen, openDialog, closeDialog } = useBookNowDialog();
   let { id } = useParams();
@@ -77,6 +63,10 @@ const PackageDetails = () => {
     openDialog();
   };
 
+  const handleUpdateTab = (e) => {
+    setActiveTab(e);
+  };
+
   return (
     <PageWrapper>
       <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
@@ -109,169 +99,44 @@ const PackageDetails = () => {
 
               <hr className="w-full h-1 my-3" />
 
-              <Card className="mb-8">
-                <Carousel className="w-full">
-                  <CarouselContent>
-                    {itinerary.images.map((image, index) => (
-                      <CarouselItem key={index}>
-                        <div className="aspect-video relative">
-                          <img
-                            src={image}
-                            alt={`${itinerary.itinerary_name}`}
-                            className="absolute inset-0 w-full h-full object-cover"
-                          />
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="left-4" />
-                  <CarouselNext className="right-4" />
-                </Carousel>
-              </Card>
+              <ImageCarousel
+                images={itinerary.images}
+                itinerary_name={itinerary.itinerary_name}
+              />
 
               <Card className="p-6 mb-8 rounded-none">
                 <h2 className="text-xl font-semibold mb-4">Overview</h2>
                 <p className="text-gray-600">{itinerary.description}</p>
               </Card>
 
-              <Card className="p-6 mb-8 rounded-none">
-                <h2 className="text-xl font-semibold mb-4">
-                  Included Services
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {Object.keys(itinerary?.basic_services)?.map((e, i) => {
-                    if (e == "flight")
-                      return (
-                        <Badge
-                          key={i}
-                          variant="secondary"
-                          className="text-base py-2"
-                        >
-                          <Plane className="h-4 w-4 mr-2" /> Flight
-                        </Badge>
-                      );
-                    if (e == "hotels")
-                      return (
-                        <Badge
-                          key={i}
-                          variant="secondary"
-                          className="text-base py-2"
-                        >
-                          <Hotel className="h-4 w-4 mr-2" />{" "}
-                          {itinerary.basic_services?.[e]?.[0]}
-                        </Badge>
-                      );
-                    if (e == "cabs")
-                      return (
-                        <Badge
-                          key={i}
-                          variant="secondary"
-                          className="text-base py-2"
-                        >
-                          <Car className="h-4 w-4 mr-2" /> Transfers
-                        </Badge>
-                      );
-                    if (e == "food")
-                      return (
-                        <Badge
-                          key={i}
-                          variant="secondary"
-                          className="text-base py-2"
-                        >
-                          <Utensils className="h-4 w-4 mr-2" /> Meals
-                        </Badge>
-                      );
-                    if (e == "activities")
-                      return (
-                        <Badge
-                          key={i}
-                          variant="secondary"
-                          className="text-base py-2"
-                        >
-                          <Activity className="h-4 w-4 mr-2" /> Activities
-                        </Badge>
-                      );
-                  })}
-                </div>
-              </Card>
-
-              <Card className="p-6 rounded-none">
-                <Accordion
-                  type="single"
-                  className="w-full"
-                  defaultValue={`day-${itinerary.day_wise_activity[0].day}`}
-                >
-                  {itinerary.day_wise_activity.map((day) => (
-                    <AccordionItem key={day.day} value={`day-${day.day}`}>
-                      <AccordionTrigger className="text-left">
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-5 w-5" />
-                          <span>
-                            Day {day.day}: {day.title}
-                          </span>
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <p>{day.activities}</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </Card>
+              {itinerary?.basic_services && (
+                <ServiceInclude basic_services={itinerary.basic_services} />
+              )}
+              <TabBar
+                tabs={tabs}
+                activeTab={activeTab}
+                handleUpdateTab={handleUpdateTab}
+              />
+              {activeTab == "activities" ? (
+                <DayWiseActivities
+                  day_wise_activity={itinerary?.day_wise_activity}
+                />
+              ) : activeTab == "overview" ? (
+                <Overview
+                  highlights={itinerary?.highlights}
+                  inclusions={itinerary?.inclusions}
+                  exclusions={itinerary?.exclusions}
+                />
+              ) : activeTab == "calculate" ? (
+                <CalculatePriceScreen />
+              ) : null}
             </div>
 
-            <div className="lg:col-span-1">
-              <Card className="p-6 sticky top-2 rounded-none">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-xl font-semibold mb-2">
-                      Stay Connected
-                    </h2>
-                    <div className="flex items-center gap-2 text-gray-600 mb-2">
-                      <PhoneCall className="h-5 w-5" />
-                      <span>+91 9260927665</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <Mail className="h-5 w-5" />
-                      <span>info@mapmytour.in</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 mb-2 border-t mt-4 pt-4">
-                      <Clock className="h-5 w-5" />
-                      <span>{itinerary.duration}</span>
-                    </div>
-                  </div>
-
-                  <div className="border-t pt-4 ">
-                    <div className="text-sm text-gray-600 mb-1">
-                      Starting from
-                    </div>
-                    <div className="text-3xl font-bold text-primary mb-6">
-                      ₹{itinerary.package_cost.toLocaleString("en-IN")}{" "}
-                      <span className="text-sm text-gray-600 font-medium">
-                        /per adult
-                      </span>
-                    </div>
-                    <div className="space-y-3">
-                      <Button
-                        className="w-full rounded-none"
-                        size="lg"
-                        onClick={handleBookNowClick}
-                      >
-                        Book Now
-                      </Button>
-                      {/* <Button
-                      className="w-full rounded-none"
-                      variant="outline"
-                      size="lg"
-                      onClick={handleGetBestDeal}
-                    >
-                      Get Best Deal
-                    </Button> */}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </div>
+            <StickyCard
+              duration={itinerary.duration}
+              package_cost={itinerary.package_cost}
+              handleBookNowClick={handleBookNowClick}
+            />
           </div>
         )}
         {!loading && !itinerary?.id && <Package />}
