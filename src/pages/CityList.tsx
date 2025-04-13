@@ -3,7 +3,7 @@ import FooterNote from "@/components/common/FooterNote";
 import NavBar from "@/components/common/NavBar";
 import PageHeader from "@/components/common/PageHeader";
 import Package from "@/components/emptyscreen/Package";
-import { fetchSubDestinations } from "@/utils/supabaseQueries";
+import { fetchSubDestinations, fetchSubInternational } from "@/utils/supabaseQueries";
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -20,13 +20,19 @@ export default function CityList() {
 
   // Get destinationId from location state or use the index as a fallback
   const destinationId = location.state?.destinationId;
-
+  const is_international = location.state?.is_international;
+ 
   useEffect(() => {
     const loadSubDestinations = async () => {
       try {
         setLoading(true);
         if (destinationId) {
-          const data = await fetchSubDestinations(destinationId);
+          let  data= null
+          if(is_international ){
+             data = await fetchSubInternational(destinationId);
+          }else{
+             data = await fetchSubDestinations(destinationId);
+          }
           setSubDestinations(data);
         } else {
           // If no destinationId is provided, show empty state
@@ -45,7 +51,17 @@ export default function CityList() {
     };
 
     loadSubDestinations();
-  }, [destinationId, toast]);
+  }, [destinationId, is_international, toast]);
+
+  function handleNavigation(id:number, name:string, is_international,is_international_package){
+if(is_international){
+  nav(`/city/0/${name}`, { state: { destinationId: id, is_international } })
+}else{
+  nav(`/packages/${id}`, {
+    state: { subDestinationName: name ,isInternationalPackage: is_international_package},
+  })
+}
+  }
 
   return (
     <PageWrapper>
@@ -77,11 +93,7 @@ export default function CityList() {
                   alt={dest.name}
                 />
                 <div
-                  onClick={() =>
-                    nav(`/packages/${dest.id}`, {
-                      state: { subDestinationName: dest.name },
-                    })
-                  }
+                  onClick={()=>handleNavigation(dest.id, dest.name,dest.is_international,dest.is_international_package)}
                   className="destination-overlay text-white no-underline"
                 >
                   <h5 className="text-white">{dest.name}</h5>

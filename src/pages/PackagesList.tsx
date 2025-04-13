@@ -1,10 +1,5 @@
-import BookNowDialog from "@/components/BookNowDialog";
-import FooterNote from "@/components/common/FooterNote";
-import NavBar from "@/components/common/NavBar";
-import PageHeader from "@/components/common/PageHeader";
 import Package from "@/components/emptyscreen/Package";
 import { fetchPackages } from "@/utils/supabaseQueries";
-import { useBookNowDialog } from "@/hooks/useBookNowDialog";
 import {
   faCalendarAlt,
   faMapMarkerAlt,
@@ -21,14 +16,13 @@ import { getPackageName } from "@/utils/getPackageName";
 export default function PackagesList() {
   const { destinationId } = useParams();
   const location = useLocation();
-  const { isOpen, openDialog, closeDialog } = useBookNowDialog();
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
-
+  
   // Get subDestinationName from location state
   const  subDestinationName = getPackageName(location.state?.subDestinationName )|| "Tour";
-
+  const  isInternationalPackage = location.state?.isInternationalPackage|| false
 
   useEffect(() => {
     const loadPackages = async () => {
@@ -36,7 +30,7 @@ export default function PackagesList() {
         setLoading(true);
         // destinationId here is actually the sub_destination_id from the route
         if (destinationId) {
-          const data = await fetchPackages(destinationId);
+          const data = await fetchPackages(destinationId,isInternationalPackage);
           setPackages(data);
         } else {
           setPackages([]);
@@ -54,21 +48,19 @@ export default function PackagesList() {
     };
 
     loadPackages();
-  }, [destinationId, toast]);
+  }, [destinationId, isInternationalPackage, toast]);
 
   const handleBookNowClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    openDialog();
+    // e.preventDefault();
+    // openDialog();
   };
   const nav = useNavigate();
   const navigateToDetails = (packageId) => {
-    // nav("/package-details/:1");
+    nav(`/package-details/:${packageId}`);
   };
 
   return (
     <PageWrapper>
-      <BookNowDialog isOpen={isOpen} onClose={closeDialog} />
-
       <div className="container mx-auto pb-12 pt-[4rem]">
         <div className="text-center mb-8">
           <h6
@@ -90,7 +82,7 @@ export default function PackagesList() {
               <div
                 key={pkg.id}
                 className="package-item bg-white mb-4 shadow-sm"
-                onClick={navigateToDetails}
+                onClick={()=>navigateToDetails(pkg.id)}
               >
                 <img
                   className="w-full h-48 object-cover"
@@ -146,7 +138,7 @@ export default function PackagesList() {
                     className="bg-primary text-white w-full py-2 inline-block text-center"
                     onClick={handleBookNowClick}
                   >
-                    Book Now
+                    View Package
                   </a>
                 </div>
               </div>

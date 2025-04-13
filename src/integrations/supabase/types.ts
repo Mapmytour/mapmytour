@@ -196,6 +196,41 @@ export type Database = {
           },
         ]
       }
+      sub_international: {
+        Row: {
+          created_at: string
+          sub_destinations: string
+          id: string
+          img: string
+          name: string
+          packages_count: string
+        }
+        Insert: {
+          created_at?: string
+          sub_destinations: string
+          id?: string
+          img: string
+          name: string
+          packages_count: string
+        }
+        Update: {
+          created_at?: string
+          sub_destinations?: string
+          id?: string
+          img?: string
+          name?: string
+          packages_count?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sub_destinations_sub_destinations_fkey" 
+            columns: ["sub_destinations"]
+            isOneToOne: false
+            referencedRelation: "destinations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
