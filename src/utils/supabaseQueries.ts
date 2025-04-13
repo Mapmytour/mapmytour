@@ -32,7 +32,11 @@ export const fetchSubDestinations = async (destinationId: string) => {
 };
 // Fetch sub-destinations for a specific destination
 export const fetchSubInternational = async (destinationId: string) => {
-  const { data, error } = await supabase.from("sub_international").select();
+  const { data, error } = await supabase
+    .from("sub_international")
+    .select("*")
+    .eq("sub_destinations", destinationId)
+    .order("name");
 
   if (error) {
     console.error("Error fetching sub-destinations:", error);
