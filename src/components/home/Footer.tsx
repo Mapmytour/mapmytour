@@ -118,7 +118,7 @@ export default function Footer() {
           </h5>
           <p>
             <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
-            Panchsheel Nagar, Chhindwara - 480001 (Near of Sdo Office Chhindwara Collectorate Office)
+            54 Colony Kalkaji Tenament Kalkaji South Delhi , New Delhi, Delhi, India 110019
           </p>
           <p>
             <FontAwesomeIcon icon={faPhone} className="mr-2" />

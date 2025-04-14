@@ -144,7 +144,7 @@ const PaymentPolicy = () => {
         <br />
         Phone: <a href="tel:+919260927665" className="text-blue-600 hover:underline">+91 9260927665</a>
         <br />
-        Address: Panchsheel Nagar, Chhindwara - 480001 (Near of Sdo Office Chhindwara Collectorate Office)
+        Address: 54 Colony Kalkaji Tenament Kalkaji South Delhi , New Delhi, Delhi, India 110019
       </p>
     </div>
     </PageWrapper>

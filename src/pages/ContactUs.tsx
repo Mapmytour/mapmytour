@@ -92,7 +92,7 @@ const ContactUs = () => {
             <MapPin className="h-8 w-8 text-white" />
           </div>
           <h3 className="font-semibold text-lg mb-2">Our Location</h3>
-          <p className="text-gray-600">Panchsheel Nagar, Chhindwara - 480001</p>
+          <p className="text-gray-600">54 Colony Kalkaji Tenament Kalkaji South Delhi , New Delhi, Delhi, India 110019</p>
         </div>
 
         <div className="bg-white p-6 shadow-md rounded-md flex flex-col items-center text-center">
