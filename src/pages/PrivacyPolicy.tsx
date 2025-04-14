@@ -204,8 +204,7 @@ const PrivacyPolicy = () => {
             +91 9260927665
           </a>
           <br />
-          Address: Panchsheel Nagar, Chhindwara - 480001 (Near of Sdo Office
-          Chhindwara Collectorate Office)
+          Address: 54 Colony Kalkaji Tenament Kalkaji South Delhi , New Delhi, Delhi, India 110019
         </p>
       </div>
     </PageWrapper>
