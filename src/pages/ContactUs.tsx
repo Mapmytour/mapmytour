@@ -116,7 +116,7 @@ const ContactUs = () => {
         <div className="w-full h-96 rounded-md overflow-hidden">
           <iframe 
             className="w-full h-full"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3697.8746712526486!2d78.93537049999999!3d22.0543892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd56725da3c2be9%3A0x55f8a49de8553aae!2sMAHORE%20JI%20E%20PANJIYAN%20SERVICE%20PROVIDER!5e0!3m2!1sen!2sin!4v1741628503303!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14017.254289567943!2d77.256090!3d28.525705!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3e91a04e82b%3A0x5b839a28972f3c92!2s2%2F54-B%2C%20DDA%20Flats%20Kalkaji%2C%20Block%20J%202%2C%20Block%20K%2C%20New%20Delhi%2C%20Delhi%20110019!5e0!3m2!1sen!2sin!4v1713177648886!5m2!1sen!2sin" 
             style={{ border: 0 }} 
             allowFullScreen={true} 
             loading="lazy" 
