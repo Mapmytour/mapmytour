@@ -116,7 +116,7 @@ const ContactUs = () => {
         <div className="w-full h-96 rounded-md overflow-hidden">
           <iframe 
             className="w-full h-full"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14017.254289567943!2d77.256090!3d28.525705!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3e91a04e82b%3A0x5b839a28972f3c92!2s2%2F54-B%2C%20DDA%20Flats%20Kalkaji%2C%20Block%20J%202%2C%20Block%20K%2C%20New%20Delhi%2C%20Delhi%20110019!5e0!3m2!1sen!2sin!4v1713177648886!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d367.2297366076791!2d77.25578424516318!3d28.52580922006838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce165b9146361%3A0xb35ce3223500dfb2!2s2%2F54-B%2C%20DDA%20Flats%20Kalkaji%2C%20Block%20J%202%2C%20Block%20K%2C%20Area%2C%20New%20Delhi%2C%20Delhi%20110019!5e0!3m2!1sen!2sin!4v1744682340773!5m2!1sen!2sin" 
             style={{ border: 0 }} 
             allowFullScreen={true} 
             loading="lazy" 
