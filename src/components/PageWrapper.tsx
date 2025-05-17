@@ -21,7 +21,7 @@ export default function PageWrapper({
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 relative">
        {/* Book Now Dialog */}
        <BookNowDialog isFromEnquiry={isFromEnquiry} isOpen={isOpen} onClose={closeDialog} />
 

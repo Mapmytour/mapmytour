@@ -18,11 +18,13 @@ import PaymentPolicy from "./pages/PaymentPolicy";
 import ScrollToTop from "./components/ScrollToTop";
 import Profile from "./pages/Profile";
 import PasswordReset from "./components/auth/PasswordReset";
+import AnnouncementBanner from "./components/AnnouncementBanner";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <AnnouncementBanner/>
     <TooltipProvider>
       <Toaster />
       <Sonner />
